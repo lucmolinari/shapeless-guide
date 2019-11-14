@@ -70,11 +70,11 @@ object CsvHLists {
     Employee("Milton", 3, false, 3.2)
   )
 
-  // implicit val iceCreamEncoder: CsvEncoder[IceCream] = {
-  //   val gen = Generic[IceCream]
-  //   val enc = CsvEncoder[gen.Repr]
-  //   createEncoder(iceCream => enc.encode(gen.to(iceCream)))
-  // }
+  implicit val iceCreamEncoder: CsvEncoder[IceCream] = {
+    val gen = Generic[IceCream]
+    val enc = CsvEncoder[gen.Repr]
+    createEncoder(iceCream => enc.encode(gen.to(iceCream)))
+  }
 
   // Given a type A and an HList type R, an implicit Generic to map A to R, 
   // and a CsvEncoder for R, create a CsvEncoder for A.
